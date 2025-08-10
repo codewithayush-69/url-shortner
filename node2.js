@@ -96,6 +96,6 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(port,() => {
+server.listen(port, '0.0.0.0', () => {
   console.log(`server running at : http://localhost:${port}`);
 });
