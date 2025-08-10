@@ -82,7 +82,7 @@ const server = createServer(async (req, res) => {
         res.end(
           JSON.stringify({
             success: true,
-            shortUrl: `http://localhost:${port}/${finalShortCode}`,
+            shortUrl: `http://localhost:${process.env.RENDER_EXTERNAL_HOSTNAME}/${finalShortCode}`,
             originalUrl: url,
             shortCode: finalShortCode,
           })
