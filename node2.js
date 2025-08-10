@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { error, log } from "console";
 import { json } from "stream/consumers";
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const DATA_FILE = path.join("data", "links.json");
 const serveFile = async (res, path, contenType) => {
   try {
