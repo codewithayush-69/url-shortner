@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+div {
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="url"],
+input[type="shortc"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/* Style for the URL list container */
+#Shorten_url {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  background: #3e4246; /* Light gray background */
+}
+
+/* Style for each URL list item */
+#Shorten_url li {
+  background: #a1a1a1;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border-left: 4px solid #2563eb; /* Blue accent border */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for list items */
+#Shorten_url li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-left-width: 6px; /* Thicker border on hover */
+}
+
+/* Style for the anchor tags */
+#Shorten_url li a {
+  color: #2563eb; /* Blue color for links */
+  text-decoration: none;
+  font-weight: 500;
+  display: block; /* Make it fill the li */
+  padding: 4px 0;
+}
+
+/* Style for the URL arrow separator */
+#Shorten_url li a::after {
+  content: " → "; /* Arrow between short and original URL */
+  color: #94a3b8;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+/* Style for the original URL text (after arrow) */
+#Shorten_url li a + span {
+  color: #64748b; /* Gray color for original URL */
+  font-size: 0.9em;
+  word-break: break-all; /* Handle long URLs */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #Shorten_url {
+    max-width: 100%;
+  }
+
+  #Shorten_url li {
+    padding: 10px;
+  }
+
+  #Shorten_url li a::after {
+    margin: 0 4px;
+  }
+}

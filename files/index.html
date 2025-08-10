@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>url shortner</title>
+  </head>
+  <body>
+    <div>
+      <h1>URL Shortner</h1>
+      <form id="shortner-form">
+        <div>
+          <label for="url">Enter the URL</label>
+          <input type="url" name="url" id="url" required />
+        </div>
+        <div>
+          <label for="short-code">Enter shortner code</label>
+          <input type="text" name="shortc" id="shortc" required />
+        </div>
+        <button type="submit">Shorten URL</button>
+      </form>
+      <h2>shortned URL</h2>
+      <ul id="Shorten_url"></ul>
+    </div>
+    <script>
+      const fetchShortendURL = async () => {
+        const response = await fetch("/links");
+        const data = await response.json();
+        console.log(data);
+        
+        const list = document.getElementById("Shorten_url");
+        list.innerHTML = "";
+
+        for (const [shortCode, url] of Object.entries(data)) {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href='/${shortCode}' target'_blank'>${window.location.origin}/${shortCode}</a> -> ${url}`;
+          list.appendChild(li);
+        }
+      };
+      document
+        .getElementById("shortner-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+          let formData = new FormData(event.target);
+          let url = formData.get("url");
+          let shortCode = formData.get("shortc");
+
+          try {
+            const response = await fetch("/shorten", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url, shortCode }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              fetchShortendURL();
+              alert(`Shortened URL created: ${data.shortUrl}`);
+              event.target.reset();
+            } else {
+              alert(data.error || "Error creating short URL");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while shortening the URL");
+          }
+        });
+        fetchShortendURL();
+    </script>
+  </body>
+</html>

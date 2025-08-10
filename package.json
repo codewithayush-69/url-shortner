@@ -1,0 +1,12 @@
+{
+  "name": "url_shorter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node2.js",
+  "scripts": {
+    "dev": "node --watch ./node2.js",
+    "start": "node ./node2.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
